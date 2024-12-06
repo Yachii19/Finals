@@ -1,0 +1,21 @@
+* {
+  margin          : 0;
+  padding         : 0;
+  box-sizing      : border-box;
+}
+
+.card-heigth{
+  height: 100% !important;
+}
+
+.custom-width {
+  width: 25px;
+  height: 25px;
+}
+
+.center-crop{
+  object-fit: none;
+  object-position: center;
+  min-height: 240px;
+  width: 100%;
+}
