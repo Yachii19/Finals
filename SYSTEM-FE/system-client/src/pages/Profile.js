@@ -60,7 +60,7 @@ export default function Profile() {
           <h2 className="text-center">Profile Details</h2>
           <Row className="profile-detail">
             <Col className="text-end detail-label">Name:</Col>
-            <Col className="detail-value">{user.firstName} {user.lastName}</Col>
+            <Col className="detail-value">{user.firstName} {user.middleName} {user.lastName}</Col>
           </Row>
           <Row className="profile-detail">
             <Col className="text-end detail-label">Email:</Col>
