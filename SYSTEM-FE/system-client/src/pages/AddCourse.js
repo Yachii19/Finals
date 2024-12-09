@@ -69,7 +69,7 @@ export default function AddCourse() {
                     </Form.Group>
 
                     <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-                        <Button variant="warning" className="w-100 rounded-pill" type="submit">Login</Button>
+                        <Button variant="warning" className="w-100 rounded-pill" type="submit">Add Course</Button>
                     </Form.Group>
 
                 </Form>

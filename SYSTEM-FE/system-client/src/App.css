@@ -19,3 +19,156 @@
   min-height: 240px;
   width: 100%;
 }
+
+/* General Styles */
+.profile-container {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.profile-card {
+  border-radius: 20px;
+  padding: 40px;
+  width: 70%;
+  max-width: 900px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.4);
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.profile-picture {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-right: 1px solid;
+  padding-right: 20px;
+}
+
+.profile-img {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border: 3px solid;
+  margin-bottom: 15px;
+}
+
+.profile-details {
+  padding-left: 20px;
+}
+
+.profile-detail {
+  margin-bottom: 15px;
+}
+
+.profile-detail > .detail-label {
+  font-weight: 600; 
+}
+
+.profile-detail > .detail-value {
+  font-weight: 400;
+}
+
+.button-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+
+.button-container > .custom-button {
+  background: linear-gradient(45deg, #3b4cca, #1f2a73); 
+  border: none;
+  padding: 10px 20px;
+  color: #f5f5f5;
+  border-radius: 50px;
+  font-size: 16px;
+  font-weight: bold;
+  transition: all 0.3s ease;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.5);
+  margin-top: 20px;
+}
+
+.button-container > .custom-button:hover {
+  background: linear-gradient(45deg, #1f2a73, #3b4cca);
+  box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.7), 0px 0px 10px rgba(59, 76, 202, 0.6);
+  transform: scale(1.05); 
+}
+
+/* Light Theme */
+.light-theme .profile-container {
+  background-color: #f7f8fa;
+  color: #333;
+}
+
+.light-theme .profile-card {
+  background: #ffffff;
+  color: #555;
+}
+
+.light-theme .profile-picture {
+  border-right-color: #e5e5e5;
+}
+
+.light-theme .profile-img {
+  border-color: #8d8d8d;
+}
+
+.light-theme .profile-detail > .detail-label {
+  color: #777;
+}
+
+.light-theme .profile-detail > .detail-value {
+  color: #333;
+}
+
+.light-theme .custom-button {
+  background: linear-gradient(45deg, #6c63ff, #3b3ee3);
+  color: #fff;
+}
+
+.light-theme .custom-button:hover {
+  background: linear-gradient(45deg, #3b3ee3, #6c63ff);
+  box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.3), 0px 0px 10px rgba(108, 99, 255, 0.5);
+}
+
+/* Dark Theme */
+.dark-theme {
+  background-color: #1e1e2f;
+  color: #f5f5f5;
+}
+
+.dark-theme .profile-card {
+  background: #2b2b3d;
+  color: #ddd;
+}
+
+.dark-theme .profile-picture {
+  border-right-color: #444;
+}
+
+.dark-theme .profile-img {
+  border-color: #3e3e5c;
+}
+
+.dark-theme .profile-detail > .detail-label {
+  color: #bbb;
+}
+
+.dark-theme .profile-detail > .detail-value {
+  color: #f5f5f5;
+}
+
+.dark-theme .custom-button {
+  background: linear-gradient(45deg, #3b4cca, #1f2a73);
+  color: #f5f5f5;
+}
+
+.dark-theme .custom-button:hover {
+  background: linear-gradient(45deg, #1f2a73, #3b4cca);
+  box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.7), 0px 0px 10px rgba(59, 76, 202, 0.6);
+  transform: scale(1.05);
+}
+

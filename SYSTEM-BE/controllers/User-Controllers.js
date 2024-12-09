@@ -11,7 +11,7 @@ module.exports.registerUser = (req, res) => {
         email: req.body.email,
         contactNumber: req.body.contactNumber,
         password: bcryptjs.hashSync(req.body.password, 10),
-        Age: req.body.age
+        age: req.body.age
     })
 
     
@@ -126,6 +126,44 @@ module.exports.enroll = (req, res) => {
     })
 }
 
-module.exports.updatePassword = (req, res) => {
-    return User.findByIdAndUpdate()
-}
+
+module.exports.updatePassword = async (req, res) => {
+    const { userId } = req.params;
+    const { newPassword } = req.body;
+
+    if (!newPassword) {
+        return res.status(400).json({ success: false, message: "New password is required." });
+    }
+
+    if (newPassword.length < 6) {
+        return res.status(400).json({ success: false, message: "Password must be at least 6 characters long." });
+    }
+
+    try {
+        const hashedPassword = await bcryptjs.hash(newPassword, 10);
+        const updateField = { password: hashedPassword };
+
+        // Update the password in the database
+        const result = await User.findByIdAndUpdate(userId, updateField, { new: true });
+
+        if (!result) {
+            return res.status(404).json({
+                code: "USER-NOT-FOUND",
+                message: "Cannot find user with the provided ID"
+            });
+        }
+
+        return res.json({
+            code: "USER-PASSWORD-SUCCESSFULLY-UPDATED",
+            message: `${result.firstName} ${result.lastName}'s password successfully updated`,
+            result: result
+        });
+    } catch (error) {
+        console.error("Error updating password:", error);
+        return res.status(500).json({
+            code: "INTERNAL_SERVER_ERROR",
+            message: "An error occurred while updating the password."
+        });
+    }
+};
+

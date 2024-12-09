@@ -1,5 +1,5 @@
-import { Container } from 'react-bootstrap';
 import './App.css';
+import { Container } from 'react-bootstrap';
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 
@@ -15,8 +15,6 @@ import { UserProvider } from './UserContext';
 import Course from './pages/Course';
 import Profile from './pages/Profile';
 import AddCourse from './pages/AddCourse';
-
-
 
 
 

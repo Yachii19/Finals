@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Modal, Button, Form } from "react-bootstrap";
+import Swal from "sweetalert2";
 
 export default function ChangePasswordModal({ show, onHide, userId }) {
     const [newPassword, setNewPassword] = useState("");
@@ -20,7 +21,7 @@ export default function ChangePasswordModal({ show, onHide, userId }) {
         }
 
         // Send PUT request to update password
-        fetch(`http://localhost:4000/users/${userId}`, {
+        fetch(`http://localhost:4000/users/update/${userId}`, {
             method: "PUT",
             headers: {
                 "Content-Type": "application/json",
@@ -28,18 +29,35 @@ export default function ChangePasswordModal({ show, onHide, userId }) {
             },
             body: JSON.stringify({ newPassword })
         })
-        .then((response) => response.json())
+        .then((result) => result.json())
         .then((data) => {
-            if (data.success) {
-                alert("Password updated successfully!");
-                onHide(); // Close modal after successful password change
+            if (data.code === "USER-PASSWORD-SUCCESSFULLY-UPDATED") {
+                Swal.fire({
+                    title: "SUCCESSFULLY UPDATED PASSWORD",
+                    text: "You have successfully updated your password",
+                    icon: "success"
+                })
+                setNewPassword("");
+                setConfirmPassword("");
+                setError("");
+                onHide(); 
+            } else if(data.message === "New password is required.") {
+                Swal.fire({
+                    title: "USER-NOT-FOUND",
+                    text: "Cannot find the user to update the password",
+                    icon: "error"
+                })
             } else {
                 setError(data.message || "An error occurred. Please try again.");
             }
         })
-        .catch((err) => {
+        .catch((err) => {   
             console.error(err);
-            setError("An error occurred. Please try again.");
+            Swal.fire({
+                title: "SOMETHING WENT WRONG!",
+                text: "Please try again",
+                icon: "error"
+            })
         });
     };
 
